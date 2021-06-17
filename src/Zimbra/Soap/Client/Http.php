@@ -237,7 +237,7 @@ class Http extends EventEmitter implements ClientInterface
     public function doRequest(SoapRequest $request)
     {
         $this->soapMessage = new SoapMessage;
-        if(!empty($this->_authToken))
+        if(!empty($this->_authToken) && !($request instanceof \Zimbra\Admin\Request\Auth))
         {
             $this->soapMessage->addHeader('authToken', $this->_authToken);
         }
